@@ -5,6 +5,8 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 import Layout from "./Layout.astro";
 import { SITE } from "@/config";
 
+import Comments from "@/components/Comments.astro";
+
 export interface Props {
   frontmatter: {
     title: string;
@@ -18,11 +20,13 @@ const { frontmatter } = Astro.props;
 <Layout title={`${frontmatter.title} | ${SITE.title}`}>
   <Header />
   <Breadcrumb />
+  
   <main id="main-content">
     <section id="about" class="prose mb-28 max-w-3xl prose-img:border-0">
       <h1 class="text-2xl tracking-wider sm:text-3xl">{frontmatter.title}</h1>
       <slot />
     </section>
   </main>
+  <Comments />
   <Footer />
 </Layout>
