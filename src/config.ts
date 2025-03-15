@@ -1,5 +1,5 @@
 export const SITE = {
-  website: "https://blog2.tcea.top/",
+  website: "https://blog.tcea.top/",
   author: "白鼠Cysnies",
   profile: "https://tcea.top/",
   desc: "白鼠的小站",
