@@ -102,7 +102,6 @@ const nextPost =
         size="lg"
         class="my-2"
       />
-      <EditPost class="max-sm:hidden" editPost={editPost} postId={post.id} />
     </div>
     <article id="article" class="mx-auto prose mt-8 max-w-3xl">
       <Content />
@@ -126,7 +125,7 @@ const nextPost =
         class="focus-outline py-1 whitespace-nowrap hover:opacity-75"
       >
         <IconChevronLeft class="inline-block rotate-90" />
-        <span>Back to Top</span>
+        <span>返回顶部</span>
       </button>
     </div>
 
@@ -142,7 +141,7 @@ const nextPost =
           >
             <IconChevronLeft class="inline-block flex-none" />
             <div>
-              <span>Previous Post</span>
+              <span>上一篇</span>
               <div class="text-sm text-accent/85">{prevPost.title}</div>
             </div>
           </a>
@@ -155,7 +154,7 @@ const nextPost =
             class="flex w-full justify-end gap-1 text-right hover:opacity-75 sm:col-start-2"
           >
             <div>
-              <span>Next Post</span>
+              <span>下一篇</span>
               <div class="text-sm text-accent/85">{nextPost.title}</div>
             </div>
             <IconChevronRight class="inline-block flex-none" />
