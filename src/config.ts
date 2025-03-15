@@ -11,10 +11,5 @@ export const SITE = {
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   showArchives: true,
   showBackButton: true, // show back button in post detail
-  editPost: {
-    url: "https://github.com/cysnies/blog-astro/edit/main/src/content/blog",
-    text: "Suggest Changes",
-    appendFilePath: true,
-  },
   dynamicOgImage: true,
 } as const;
