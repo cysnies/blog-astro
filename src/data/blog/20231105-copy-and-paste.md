@@ -3,7 +3,7 @@ author: 白鼠Cysnies
 pubDatetime: 2023-11-05T10:25:54.547Z
 title: 轻松解除网页复制与粘贴限制
 slug: copy-and-paste
-featured: yes
+featured: no
 ogImage: https://z1.ax1x.com/2023/11/05/piQ6pn0.jpg
 tags:
   - Web
