@@ -5,7 +5,6 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Tag from "@/components/Tag.astro";
 import Datetime from "@/components/Datetime.astro";
-import EditPost from "@/components/EditPost.astro";
 import ShareLinks from "@/components/ShareLinks.astro";
 import BackButton from "@/components/BackButton.astro";
 import { slugifyStr } from "@/utils/slugify";
@@ -30,8 +29,7 @@ const {
   canonicalURL,
   pubDatetime,
   modDatetime,
-  tags,
-  editPost,
+  tags
 } = post.data;
 
 const { Content } = await render(post);
@@ -111,8 +109,6 @@ const nextPost =
     </article>
 
     <hr class="my-8 border-dashed" />
-
-    <EditPost class="sm:hidden" editPost={editPost} postId={post.id} />
 
     <ul class="mt-4 mb-8 sm:my-8">
       {tags.map(tag => <Tag tag={slugifyStr(tag)} tagName={tag} />)}
