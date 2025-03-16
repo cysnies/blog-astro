@@ -61,8 +61,8 @@ html[data-theme="dark"] {
 /* 移动端优化 */
 @media (max-width: 768px) {
   .aplayer-container {
-    width: 100vw;
-    left: -1rem;
-    padding: 0 1rem;
+    width: 90vw;
+    left: 0rem;
+    padding: 0rem;
   }
 }
