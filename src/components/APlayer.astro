@@ -1,0 +1,100 @@
+---
+import 'aplayer/dist/APlayer.min.css';
+
+interface Props {
+  audio: Array<{
+    name: string;
+    artist: string;
+    url: string;
+    cover: string;
+    lrc: string;
+    [key: string]: any;
+  }>;
+  fixed?: boolean;
+  mini?: boolean;
+  theme?: string;
+  loop?: 'all' | 'one' | 'none';
+  order?: 'list' | 'random';
+  volume?: number;
+}
+
+const { 
+  audio,
+  fixed = false,
+  mini = false,
+  theme = '#b7daff',
+  loop = 'all',
+  order = 'list',
+  volume = 0.7,
+} = Astro.props;
+
+const instanceId = Math.random().toString(36).substr(2, 9);
+const config = JSON.stringify({
+  audio: audio.map(track => ({
+    ...track,
+    lrc: track.lrc
+  })),
+  fixed,
+  mini,
+  theme,
+  loop,
+  order,
+  volume,
+  autoplay: false
+});
+---
+
+<div id={`aplayer-${instanceId}`} class="aplayer-container" data-config={config}></div>
+
+<script is:inline define:vars={{ instanceId, config }}>
+  (function() {
+    let player = null;
+
+    const initPlayer = () => {
+      const container = document.getElementById(`aplayer-${instanceId}`);
+      if (!container || player) return;
+
+      const config = JSON.parse(container.dataset.config);
+      
+      player = new APlayer({
+        container: container,
+        ...config,
+        lrcType: 3 // 使用内置歌词加载功能
+      });
+
+      // 基础事件处理
+      player.on('error', (error) => {
+        console.error('播放器错误:', error);
+      });
+    };
+
+    const destroyPlayer = () => {
+      if (player) {
+        player.destroy();
+        player = null;
+      }
+    };
+
+    // Astro页面事件监听
+    document.addEventListener('astro:page-load', initPlayer);
+    document.addEventListener('astro:before-swap', destroyPlayer);
+
+    // 初始加载
+    if (document.readyState === 'complete') {
+      initPlayer();
+    } else {
+      document.addEventListener('DOMContentLoaded', initPlayer);
+    }
+
+    // 清理播放器
+    window.addEventListener('beforeunload', destroyPlayer);
+  })();
+</script>
+
+<style>
+  .aplayer-container {
+    margin: 1rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+</style>

@@ -57,3 +57,12 @@ html[data-theme="dark"] {
 .active-nav {
   @apply underline decoration-wavy decoration-2 underline-offset-4;
 }
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  .aplayer-container {
+    width: 100vw;
+    left: -1rem;
+    padding: 0 1rem;
+  }
+}

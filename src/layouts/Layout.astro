@@ -132,6 +132,14 @@ const structuredData = {
     <ClientRouter />
 
     <script is:inline src="/toggle-theme.js" async></script>
+
+    <script>
+      // @ts-ignore - 显式声明全局类型
+      import APlayer from 'aplayer';
+      
+      // 通过类型断言解决类型问题
+      (window as unknown as { APlayer: typeof APlayer }).APlayer = APlayer;
+      </script>
   </head>
   <body>
     <slot />
